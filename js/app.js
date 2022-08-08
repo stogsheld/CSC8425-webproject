@@ -34,8 +34,8 @@ db.run('CREATE TABLE IF NOT EXISTS emp(id TEXT, name TEXT)');
 // View
 app.post('/view', function(req,res){
   db.serialize(()=>{
-    db.each('SELECT id ID, name NAME FROM emp WHERE id =?', [req.body.id], function(err,row){     
-  
+    db.each('SELECT id ID, name NAME FROM emp WHERE id =?', [req.body.id], function(err,row){
+
       if(err){
         res.send("Error encountered while displaying");
         return console.error(err.message);
