@@ -332,220 +332,227 @@
 </header>
 
 <!-- form for adding an employee -->
-<div class="container">
-  <form name="audition-form" action="/add" method="POST" onsubmit="return validateForm()">
-    <fieldset>
-      <div class="row">
-        <header>
-          <h3>Submit an audition request:</h3>
-          <p id="required-field"><i>* indicates a required field.</i></p>
-        </header>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <div class="form-floating">
-            <input type="text" class="form-control" id='forename' name="forename" placeholder="forename" minlength="2"
-                   maxlength="30" required>
-            <label for="forename">Forename *</label>
+<div class="container-fluid">
+  <br>
+  <div class="container">
+    <form name="audition-form" action="/add" method="POST" onsubmit="return validateForm()">
+      <fieldset>
+        <div class="row">
+          <header>
+            <h3>Submit an audition request:</h3>
+            <p id="required-field"><i>* indicates a required field.</i></p>
+          </header>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-floating">
+              <input type="text" class="form-control" id='forename' name="forename" placeholder="forename" minlength="2"
+                     maxlength="30" required>
+              <label for="forename">Forename *</label>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="Surname" name="surname" placeholder="surname" minlength="2"
+                     maxlength="30" required>
+              <label for="Surname">Surname *</label>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="dob" name="dob" placeholder="dob" required>
+              <label for="dob">Date of Birth (Please use the format dd-mm-yyyy) *</label>
+            </div>
           </div>
         </div>
-        <div class="col-sm">
-          <div class="form-floating">
-            <input type="text" class="form-control" id="Surname" name="surname" placeholder="surname" minlength="2"
-                   maxlength="30" required>
-            <label for="Surname">Surname *</label>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="address" name="address" placeholder="address" minlength="5"
+                     maxlength="50"
+                     required>
+              <label for="address">Address *</label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="postcode" name="postcode" placeholder="postcode" minlength="6"
+                     maxlength="8"
+                     required>
+              <label for="postcode">Postcode *</label>
+            </div>
           </div>
         </div>
-        <div class="col-sm">
-          <div class="form-floating">
-            <input type="text" class="form-control" id="dob" name="dob" placeholder="dob" required>
-            <label for="dob">Date of Birth (Please use the format dd-mm-yyyy) *</label>
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="email" name="email" placeholder="email" minlength="8"
+                     maxlength="50"
+                     required>
+              <label for="email">Email *</label>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="phonenumber"
+                     minlength="8"
+                     maxlength="15" required>
+              <label for="phonenumber">Phone Number *</label>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="form-floating">
-            <input type="text" class="form-control" id="address" name="address" placeholder="address" minlength="5" maxlength="50"
-                   required>
-            <label for="address">Address *</label>
+        <div class="row">
+          <div class="col-sm">
+            <label for="showList">Select Show:</label>
+            <select class="form-control" id='showList' name='showList' onClick="getShowSongs()">
+            </select>
+          </div>
+          <div class="col-sm">
+            <label for='songList'>Select Audition Song:</label>
+            <select class="form-control" id='songList' name='songList'>
+            </select>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="form-floating">
-            <input type="text" class="form-control" id="postcode" name="postcode" placeholder="postcode" minlength="6" maxlength="8"
-                   required>
-            <label for="postcode">Postcode *</label>
+        <div class="row">
+          <div class="col-sm">
+            <fieldset class="form-group" id="other-show" name="other-show" style="display:none;">
+              <label for="otherShowChoice">Please enter show & song you would like to audition with:</label>
+              <textarea class="form-control" id="otherShowChoice" name="otherShowChoice" rows="3"></textarea>
+            </fieldset>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <div class="form-floating">
-            <input type="text" class="form-control" id="email" name="email" placeholder="email" minlength="8" maxlength="50"
-                   required>
-            <label for="email">Email *</label>
+        <div class="row">
+          <div class="col-sm">
+            <label>Please select your preferred contact method(s):</label>
+            <div>
+              <input type="checkbox" id="contact-sms" name="contactSMS">
+              <label for="contact-sms">SMS</label>
+            </div>
+            <div>
+              <input type="checkbox" id="contact-email" name="contactEmail">
+              <label for="contact-email">Email</label>
+            </div>
+            <div>
+              <input type="checkbox" id="contact-post" name="contactPost">
+              <label for="contact-post">Post</label>
+            </div>
           </div>
         </div>
-        <div class="col-sm">
-          <div class="form-floating">
-            <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="phonenumber" minlength="8"
-                   maxlength="15" required>
-            <label for="phonenumber">Phone Number *</label>
+        <div id="prefs">
+          <span>Would you like to join our mailing list?</span>
+          <label for="yes">Yes</label>
+          <input type="radio" id="yes" name="mailingPreference" value="Yes">
+          <label for="no">No</label>
+          <input type="radio" id="no" name="mailingPreference" value="No">
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <label for="comments">Please enter any other questions/comments below:</label>
+            <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <label for="showList">Select Show:</label>
-          <select class="form-control" id='showList' name='showList' onClick="getShowSongs()">
-          </select>
-        </div>
-        <div class="col-sm">
-          <label for='songList'>Select Audition Song:</label>
-          <select class="form-control" id='songList' name='songList'>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <fieldset class="form-group" id="other-show" name="other-show" style="display:none;">
-            <label for="otherShowChoice">Please enter show & song you would like to audition with:</label>
-            <textarea class="form-control" id="otherShowChoice" name="otherShowChoice" rows="3"></textarea>
-          </fieldset>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <label>Please select your preferred contact method(s):</label>
-          <div>
-            <input type="checkbox" id="contact-sms" name="contactSMS">
-            <label for="contact-sms">SMS</label>
-          </div>
-          <div>
-            <input type="checkbox" id="contact-email" name="contactEmail">
-            <label for="contact-email">Email</label>
-          </div>
-          <div>
-            <input type="checkbox" id="contact-post" name="contactPost">
-            <label for="contact-post">Post</label>
+        <div class="row">
+          <div class="col-sm">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
           </div>
         </div>
-      </div>
-      <div id="prefs">
-        <span>Would you like to join our mailing list?</span>
-        <label for="yes">Yes</label>
-        <input type="radio" id="yes" name="mailingPreference" value="Yes">
-        <label for="no">No</label>
-        <input type="radio" id="no" name="mailingPreference" value="No">
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <label for="comments">Please enter any other questions/comments below:</label>
-          <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <input type="submit" value="Submit">
-          <input type="reset" value="Reset">
-        </div>
-      </div>
-    </fieldset>
-  </form>
-</div>
+      </fieldset>
+    </form>
+  </div>
 
-<br>
+  <br>
 
-<!-- form for viewing an employee -->
-<div class="container">
-  <form action="/view" method="POST">
-    <fieldset>
-      <div class="row">
-        <header>
-          <h3>Check user details:</h3>
-        </header>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="form-floating">
-            <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
-            <label for="dob">Date of Birth *</label>
+  <!-- form for viewing an employee -->
+  <div class="container">
+    <form action="/view" method="POST">
+      <fieldset>
+        <div class="row">
+          <header>
+            <h3>Check user details:</h3>
+          </header>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-floating">
+              <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
+              <label for="dob">Date of Birth *</label>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <input type="submit" value="Submit">
-          <input type="reset" value="Reset">
+        <div class="row">
+          <div class="col-sm">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+          </div>
         </div>
-      </div>
-    </fieldset>
-  </form>
-</div>
+      </fieldset>
+    </form>
+  </div>
 
-<br>
+  <br>
 
-<!-- form for editing an employee -->
-<div class="container">
-  <form action="/update" method="POST">
-    <fieldset>
-      <div class="row">
-        <header>
-          <h3>Update user details:</h3>
-        </header>
-      </div>
-      <div class="row">
+  <!-- form for editing an employee -->
+  <div class="container">
+    <form action="/update" method="POST">
+      <fieldset>
+        <div class="row">
+          <header>
+            <h3>Update user details:</h3>
+          </header>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-floating">
+              <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
+              <label for="Forename">Date of Birth *</label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-floating">
+              <input type="text" class="form-control" id='Surname' name="surname" placeholder="surname" minlength="2"
+                     maxlength="30" required>
+              <label for="Forename">New Surname *</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <br>
+
+  <!-- form for deleting an employee -->
+  <div class="container">
+    <form action="/delete" method="POST">
+      <fieldset>
+        <div class="row">
+          <header>
+            <h3>Delete a user:</h3>
+            <p><i>For security purposes, enter the date of birth of the employee you'd like to delete:</i></p>
+          </header>
+        </div>
         <div class="col-sm-4">
           <div class="form-floating">
             <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
             <label for="Forename">Date of Birth *</label>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="form-floating">
-            <input type="text" class="form-control" id='Surname' name="surname" placeholder="surname" minlength="2"
-                   maxlength="30" required>
-            <label for="Forename">New Surname *</label>
+        <div class="row">
+          <div class="col-sm">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <input type="submit" value="Submit">
-          <input type="reset" value="Reset">
-        </div>
-      </div>
-    </fieldset>
-  </form>
-</div>
-
-<br>
-
-<!-- form for deleting an employee -->
-<div class="container">
-  <form action="/delete" method="POST">
-    <fieldset>
-      <div class="row">
-        <header>
-          <h3>Delete a user:</h3>
-          <p><i>For security purposes, enter the date of birth of the employee you'd like to delete:</i></p>
-        </header>
-      </div>
-      <div class="col-sm-4">
-        <div class="form-floating">
-          <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
-          <label for="Forename">Date of Birth *</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <input type="submit" value="Submit">
-          <input type="reset" value="Reset">
-        </div>
-      </div>
-    </fieldset>
-  </form>
+      </fieldset>
+    </form>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
