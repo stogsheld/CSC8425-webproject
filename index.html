@@ -238,6 +238,11 @@
           alert("Please ensure your selection is between 10 and 300 characters long")
           return false;
         }
+        // Checking to see if other show box contains weird symbols
+        if (containsSpecialCharactersTextBoxes(otherShowSongSelection)) {
+          alert("Other show/song selection box cannot contain abusive symbols.")
+          return false;
+        }
       }
 
       // Checking to see if there is any text in the 'other' box when any option but 'other' has been chosen
