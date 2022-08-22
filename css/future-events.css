@@ -1,0 +1,70 @@
+/*
+CSS FOR FUTURE-EVENTS PAGE
+*/
+
+
+/* Setting default font for entire page */
+* {
+  font-family: verdana, sans-serif;
+}
+
+
+/* Navbar Attributes */
+.navbar {
+  color: black;
+}
+.nav-item {
+  font-size: x-large !important;
+  padding-left: 10px;
+}
+#navbar-container {
+  background-color: black;
+}
+
+
+/* Header Attributes */
+h1 {
+  text-align: center;
+}
+
+
+/* Containers */
+.container {
+  background-color: lightgray;
+  padding-top: 2%;
+  padding-bottom: 4%;
+}
+
+/* Rows */
+.row {
+  display: flex;
+  align-items: center;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+
+.col-lg {
+  padding: 2%;
+  background-color: lightgray;
+}
+
+
+/* Paragraphs */
+p {
+  font-size: large;
+  padding: 10px;
+}
+
+
+/* Text used for captions underneath the photos */
+.text-center {
+  color: #555555;
+  font-size: smaller;
+}
+
+
+/* Setting video size to fill the page */
+video {
+  width: 100%;
+}

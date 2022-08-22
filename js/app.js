@@ -23,24 +23,24 @@ app.use(express.static(path.join(__dirname,'../')));
 
 
 app.get('/', function(req,res){
-  res.sendFile(path.join(__dirname,'../index.html'));
+  res.sendFile(path.join(__dirname,'../audition-form.html'));
 });
 
 // add extra fields here as type TEXT
-db.run('CREATE TABLE IF NOT EXISTS emp(forename TEXT, surname TEXT, dob TEXT, address TEXT, postcode TEXT, email TEXT, phonenumber TEXT, showList TEXT, songList TEXT, otherShowChoice TEXT, contactSMS TEXT, contactEmail TEXT, contactPost TEXT, mailingPreferences TEXT, comments TEXT)');
+db.run('CREATE TABLE IF NOT EXISTS aud(username TEXT, forename TEXT, surname TEXT, dob TEXT, address TEXT, postcode TEXT, email TEXT, phonenumber TEXT, showList TEXT, songList TEXT, otherShowChoice TEXT, contactSMS TEXT, contactEmail TEXT, contactPost TEXT, mailingPreferences TEXT, comments TEXT)');
 
 /* these following functions will require editing to accept more or different field values */
 
 // View
 app.post('/view', function(req,res){
   db.serialize(()=>{
-    db.each('SELECT forename ID, surname NAME, dob DOB, address ADDRESS, postcode POSTCODE, email EMAIL, phonenumber PHONENUMBER, showList SHOWLIST, songList SONGLIST, otherShowChoice OTHERSHOWCHOICE, contactSMS CONTACTSMS, contactEmail CONTACTEMAIL, contactPost CONTACTPOST, mailingPreferences MAILINGPREFERENCES, comments COMMENTS FROM emp WHERE dob =?', [req.body.dob], function(err,row){
+    db.each('SELECT username USERNAME, forename ID, surname NAME, dob DOB, address ADDRESS, postcode POSTCODE, email EMAIL, phonenumber PHONENUMBER, showList SHOWLIST, songList SONGLIST, otherShowChoice OTHERSHOWCHOICE, contactSMS CONTACTSMS, contactEmail CONTACTEMAIL, contactPost CONTACTPOST, mailingPreferences MAILINGPREFERENCES, comments COMMENTS FROM aud WHERE username =?', [req.body.username], function(err,row){
 
       if(err){
         res.send("Error encountered while displaying");
         return console.error(err.message);
       }
-      res.send(` Forename: ${row.ID}, Surname: ${row.NAME}, Date of Birth: ${row.DOB}, Address: ${row.ADDRESS}, Postcode: ${row.POSTCODE}, Email: ${row.EMAIL}, Phone Number: ${row.PHONENUMBER}, Show Selection: ${row.SHOWLIST}, Song Selection: ${row.SONGLIST}, Other Show Choice: ${row.OTHERSHOWCHOICE}, Contact by SMS?: ${row.CONTACTSMS}, Contact by Email?: ${row.CONTACTEMAIL}, Contact by Post?: ${row.CONTACTPOST}, Subscribed to mailing list?: ${row.MAILINGPREFERENCES}, Comments: ${row.COMMENTS}`);
+      res.send(` Username: ${row.USERNAME}, Forename: ${row.ID}, Surname: ${row.NAME}, Date of Birth: ${row.DOB}, Address: ${row.ADDRESS}, Postcode: ${row.POSTCODE}, Email: ${row.EMAIL}, Phone Number: ${row.PHONENUMBER}, Show Selection: ${row.SHOWLIST}, Song Selection: ${row.SONGLIST}, Other Show Choice: ${row.OTHERSHOWCHOICE}, Contact by SMS?: ${row.CONTACTSMS}, Contact by Email?: ${row.CONTACTEMAIL}, Contact by Post?: ${row.CONTACTPOST}, Subscribed to mailing list?: ${row.MAILINGPREFERENCES}, Comments: ${row.COMMENTS}`);
       console.log("Entry displayed successfully");
     });
   });
@@ -50,12 +50,12 @@ app.post('/view', function(req,res){
 // Insert
 app.post('/add', function(req,res){
   db.serialize(()=>{
-    db.run('INSERT INTO emp(forename,surname,dob,address,postcode,email,phonenumber,showList,songList,otherShowChoice,contactSMS,contactEmail,contactPost,mailingPreferences,comments) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [req.body.forename, req.body.surname, req.body.dob, req.body.address, req.body.postcode, req.body.email, req.body.phonenumber, req.body.showList, req.body.songList, req.body.otherShowChoice, req.body.contactSMS, req.body.contactEmail, req.body.contactPost, req.body.mailingPreference, req.body.comments], function(err) {
+    db.run('INSERT INTO aud(username,forename,surname,dob,address,postcode,email,phonenumber,showList,songList,otherShowChoice,contactSMS,contactEmail,contactPost,mailingPreferences,comments) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [req.body.username, req.body.forename, req.body.surname, req.body.dob, req.body.address, req.body.postcode, req.body.email, req.body.phonenumber, req.body.showList, req.body.songList, req.body.otherShowChoice, req.body.contactSMS, req.body.contactEmail, req.body.contactPost, req.body.mailingPreference, req.body.comments], function(err) {
       if (err) {
         return console.log(err.message);
       }
-      console.log("New employee has been added");
-      res.send("New employee has been added into the database with forename = "+req.body.forename+ ", surname = "+req.body.surname + ", Date of birth = " + req.body.dob + ", Address = " + req.body.address + ", Postcode = " + req.body.postcode + ", Email Address = " + req.body.email + ", Phone Number = " + req.body.phonenumber + ", Show Chosen = " + req.body.showList + ", Song Chosen = " + req.body.songList + ", Other Show Choice = " + req.body.otherShowChoice + ", Contact by SMS? = " + req.body.contactSMS + ", Contact by Email = " + req.body.contactEmail + ", Contact by Post? = " + req.body.contactEmail + ", Mailing List Preferences = " + req.body.mailingPreference + ", Comments = " + req.body.comments);
+      console.log("New auditionee has been added");
+      res.send("New auditionee has been added into the database with username = " + req.body.username + ", forename = "+req.body.forename+ ", surname = "+req.body.surname + ", Date of birth = " + req.body.dob + ", Address = " + req.body.address + ", Postcode = " + req.body.postcode + ", Email Address = " + req.body.email + ", Phone Number = " + req.body.phonenumber + ", Show Chosen = " + req.body.showList + ", Song Chosen = " + req.body.songList + ", Other Show Choice = " + req.body.otherShowChoice + ", Contact by SMS? = " + req.body.contactSMS + ", Contact by Email = " + req.body.contactEmail + ", Contact by Post? = " + req.body.contactEmail + ", Mailing List Preferences = " + req.body.mailingPreference + ", Comments = " + req.body.comments);
     });
 });
 });
@@ -63,7 +63,7 @@ app.post('/add', function(req,res){
 //UPDATE
 app.post('/update', function(req,res){
   db.serialize(()=>{
-    db.run('UPDATE emp SET surname = ? WHERE dob = ?', [req.body.surname,req.body.dob], function(err){
+    db.run('UPDATE aud SET surname = ? WHERE username = ?', [req.body.surname,req.body.username], function(err){
       if(err){
         res.send("Error encountered while updating");
         return console.error(err.message);
@@ -78,7 +78,7 @@ app.post('/update', function(req,res){
 //DELETE
 app.post('/delete', function(req,res){
   db.serialize(()=>{
-    db.run('DELETE FROM emp WHERE dob = ?', req.body.dob, function(err) {
+    db.run('DELETE FROM aud WHERE username = ?', req.body.username, function(err) {
       if (err) {
         res.send("Error encountered while deleting");
         return console.error(err.message);

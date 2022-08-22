@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our History</title>
+
+  <!-- Link to the CSS Stylesheet used -->
+  <link rel="stylesheet" type="text/css" href="css/all-shows.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Linking Bootstrap to the page -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+<!-- Adding background image to the page that auto-fills the background, and stays fixed (i.e. doesn't scroll -->
+<body style="background-image: url('img/background-photo.jpg'); background-attachment: fixed; background-size: cover">
+
+<!-- Navbar that 'sticks' to the top of the screen when scrolling -->
+<nav class="navbar navbar-expand-md sticky-top navbar-dark" style="background-color: black;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="/img/nugss-logo.png" alt="" height="82">
+    </a>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Various links that the user can click on to take them to other pages -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <!-- Setting this link as 'active', as it is the page we are currently on (will highlight it) -->
+          <a class="nav-link active" href="our-history.html">Our History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="future-events.html">Future Events</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Auditions
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="audition-info.html">Audition Information</a></li>
+            <li><a class="dropdown-item" href="audition-form.html">Submit an Audition Request</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Break to add space between navbar and top of main content -->
+<br>
+
+<!-- Container for all 'main' content -->
+<div class="container">
+  <div class="row">
+
+    <!-- col-lg used to add responsiveness (resizes at higher resolutions compared to col-sm) -->
+    <div class="col-lg">
+      <h1>All NUGSS Shows</h1>
+
+      <!-- Horizontal divider -->
+      <hr>
+
+      <p>The table below shows the full list of all NUGSS shows.</p>
+    </div>
+  </div>
+  <div class="row">
+
+    <!-- col-lg-8 used so that it will take up 2/3 of the container when fully expanded -->
+    <div class="col-lg-8">
+
+      <!-- Table showing all NUGSS shows since formation -->
+      <table class="table table-light table-hover table-bordered align-middle caption-top">
+        <caption id="all-shows-caption">All NUGSS Shows</caption>
+        <thead>
+        <tr>
+          <th>Year</th>
+          <th>Shows</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1952</td>
+          <td>Trial By Jury</td>
+        </tr>
+        <tr>
+          <td>1953</td>
+          <td>HMS Pinafore/ Trial By Jury</td>
+        </tr>
+        <tr>
+          <td>1954</td>
+          <td>The Pirates of Penzance</td>
+        </tr>
+        <tr>
+          <td>1955</td>
+          <td>Iolanthe</td>
+        </tr>
+        <tr>
+          <td>1956</td>
+          <td>The Gondoliers</td>
+        </tr>
+        <tr>
+          <td>1957</td>
+          <td>The Yeomen of the Guard</td>
+        </tr>
+        <tr>
+          <td>1958</td>
+          <td>Patience</td>
+        </tr>
+        <tr>
+          <td>1959</td>
+          <td>The Mikado</td>
+        </tr>
+        <tr>
+          <td>1960</td>
+          <td>Ruddigore</td>
+        </tr>
+        <tr>
+          <td>1961</td>
+          <td>Iolanthe</td>
+        </tr>
+        <tr>
+          <td>1962</td>
+          <td>The Gondoliers</td>
+        </tr>
+        <tr>
+          <td>1963</td>
+          <td>Princess Ida/ The Pirates of Penzance</td>
+        </tr>
+        <tr>
+          <td>1964</td>
+          <td>Trial By Jury/ Cox and Box/ Patience</td>
+        </tr>
+        <tr>
+          <td>1965</td>
+          <td>Princess Ida</td>
+        </tr>
+        <tr>
+          <td>1966</td>
+          <td>The Pirates of Penzance</td>
+        </tr>
+        <tr>
+          <td>1967</td>
+          <td>Iolanthe/ Trial By Jury</td>
+        </tr>
+        <tr>
+          <td>1968</td>
+          <td>Patience/ The Gondoliers</td>
+        </tr>
+        <tr>
+          <td>1969</td>
+          <td>The Mikado</td>
+        </tr>
+        <tr>
+          <td>1970</td>
+          <td>The Pirates of Penzance/ Ruddigore</td>
+        </tr>
+        <tr>
+          <td>1971</td>
+          <td>HMS Pinafore</td>
+        </tr>
+        <tr>
+          <td>1972</td>
+          <td>Ruddigore</td>
+        </tr>
+        <tr>
+          <td>1973</td>
+          <td>The Yeomen of the Guard/ Humbug</td>
+        </tr>
+        <tr>
+          <td>1974</td>
+          <td>The Mikado</td>
+        </tr>
+        <tr>
+          <td>1975</td>
+          <td>Iolanthe</td>
+        </tr>
+        <tr>
+          <td>1976</td>
+          <td>Ruddigore/ Cinderella</td>
+        </tr>
+        <tr>
+          <td>1977</td>
+          <td>Patience/ Father Christmas</td>
+        </tr>
+        <tr>
+          <td>1978</td>
+          <td>Trial By Jury/ Concert/ The Grand Duke/ The Demon Alcoholic</td>
+        </tr>
+        <tr>
+          <td>1979</td>
+          <td>Iolanthe/ Ages Ago/ Concert/ Phantom of the Opera</td>
+        </tr>
+        <tr>
+          <td>1980</td>
+          <td>The Sorcerer/ Cox and Box/ The Union Jack</td>
+        </tr>
+        <tr>
+          <td>1981</td>
+          <td>Fantasia on British Sea Songs/ HMS Pinafore</td>
+        </tr>
+        <tr>
+          <td>1982</td>
+          <td>The Yeomen of the Guard</td>
+        </tr>
+        <tr>
+          <td>1983</td>
+          <td>The Pirates of Penzance</td>
+        </tr>
+        <tr>
+          <td>1984</td>
+          <td>The Mikado</td>
+        </tr>
+        <tr>
+          <td>1985</td>
+          <td>Iolanthe</td>
+        </tr>
+        <tr>
+          <td>1986</td>
+          <td>Princess Ida/ Ages Ago/ Trial By Jury/ Cox and Box</td>
+        </tr>
+        <tr>
+          <td>1987</td>
+          <td>The Gondoliers/ Cox and Box/ The Zoo</td>
+        </tr>
+        <tr>
+          <td>1988</td>
+          <td>The Grand Duke/ Wicked Waxworks</td>
+        </tr>
+        <tr>
+          <td>1989</td>
+          <td>The Pirates Strike Back!</td>
+        </tr>
+        <tr>
+          <td>1990</td>
+          <td>The Yeomen of the Guard/ Trial By Jury/ The Philanderer</td>
+        </tr>
+        <tr>
+          <td>1991</td>
+          <td>HMS Pinafore/ Modern Girls/ The Zoo</td>
+        </tr>
+        <tr>
+          <td>1992</td>
+          <td>Iolanthe/ The Wreckers of Red Rock</td>
+        </tr>
+        <tr>
+          <td>1993</td>
+          <td>The Mikado/ Robin Hood an His Merry Persons</td>
+        </tr>
+        <tr>
+          <td>1994</td>
+          <td>Patience/ Wicked Waxworks</td>
+        </tr>
+        <tr>
+          <td>1995</td>
+          <td>The Gondoliers/ The Philanderer/ Mutiny on the Pinafore/ Trial By Jury</td>
+        </tr>
+        <tr>
+          <td>1996</td>
+          <td>The Pirates of Penzance/ The Wreckers of Red Rock</td>
+        </tr>
+        <tr>
+          <td>1997</td>
+          <td>The Sorcerer/ Cox and Box/ Murder at the Savoy</td>
+        </tr>
+        <tr>
+          <td>1998</td>
+          <td>Utopia Limited/ Phantom of the Opera</td>
+        </tr>
+        <tr>
+          <td>1999</td>
+          <td>Iolanthe</td>
+        </tr>
+        <tr>
+          <td>2000</td>
+          <td>HMS Pinafore/ The Chieftain</td>
+        </tr>
+        <tr>
+          <td>2001</td>
+          <td>The Mikado/ Concert</td>
+        </tr>
+        <tr>
+          <td>2002</td>
+          <td>Fallen Fairies</td>
+        </tr>
+        <tr>
+          <td>2003</td>
+          <td>Patience</td>
+        </tr>
+        <tr>
+          <td>2004</td>
+          <td>The Hot Mikado</td>
+        </tr>
+        <tr>
+          <td>2005</td>
+          <td>The Pirates of Penzance</td>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td>The Gondoliers</td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td>The Sorcerer/ Dracula Unhinged</td>
+        </tr>
+        <tr>
+          <td>2008</td>
+          <td>The Mikado/ The House of Almost Certain Death</td>
+        </tr>
+        <tr>
+          <td>2009</td>
+          <td>Patience/ How to Marry an Aristocrat</td>
+        </tr>
+        <tr>
+          <td>2010</td>
+          <td>HMS Pinafore/ A Tale of Liquor and Dice</td>
+        </tr>
+        <tr>
+          <td>2011</td>
+          <td>The War Years</td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td>The Pirates of Penzance/ A Tale of Two Hamlets</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Princess Ida/ Dystopia Ltd.</td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td>Iolanthe/ The True Hist’ry of Constance M</td>
+        </tr>
+        <tr>
+          <td>2015</td>
+          <td>The Yeomen of the Guard/ Dorothy’s Adventures in Oz</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td>Patience/ Naughty Nancy</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>Ruddigore/ Frankenstein</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>The Pirates of Penzance/ Peter Pan</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>Utopia Limited/ Cox and Box & The Zoo</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td>Iolanthe</td>
+        </tr>
+        <tr>
+          <td>2022</td>
+          <td>The Sorcerer</td>
+        </tr>
+        <tr>
+          <td>2022</td>
+          <td>Aphrodite's Curse</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- col-lg-4 used so that it will take up 1/3 of the container when fully expanded -->
+    <div class="col-lg-4">
+      <img src="img/shows/pirates-of-penzance.jpg" alt="Pirates of Penzance poster" width="100%">
+      <img src="img/shows/utopia-ltd.jpg" alt="Utopia Limited poster" width="100%">
+      <img src="img/shows/iolanthe.jpg" alt="Iolanthe poster" width="100%">
+      <img src="img/shows/aphrodite-curse.jpg" alt="Aphrodite's Curse poster" width="100%">
+      <img src="img/shows/cox-box-zoo.jpg" alt="Cox & Box and The Zoo poster" width="100%">
+      <img src="img/shows/the-sorcerer.jpg" alt="The Sorcerer poster" width="100%">
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer including copyright info for the website -->
+<div class="mt-5 p-3 text-white text-center" style="font-size: larger; background-color: black">
+  <p>© Newcastle University Gilbert & Sullivan Society 2022</p>
+</div>
+
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

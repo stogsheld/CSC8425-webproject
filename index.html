@@ -2,623 +2,185 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Newcastle Uni G&S Society</title>
 
-  <link rel="stylesheet" type="text/css" href="css/audition-form.css">
-
+  <!-- Link to the CSS Stylesheet used -->
+  <link rel="stylesheet" type="text/css" href="css/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Linking Bootstrap to the page -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
-  <title>Audition Database</title>
-
-  <script>
-    function validateForm() {
-
-      // Getting all variables from the form
-      let forename = document.forms["audition-form"]["forename"].value;
-      let surname = document.forms["audition-form"]["surname"].value;
-      let dateOfBirth = new Date(document.getElementById("dob").value);
-      let address = document.forms["audition-form"]["address"].value;
-      let postcode = document.forms["audition-form"]["postcode"].value;
-      let email = document.forms["audition-form"]["email"].value;
-      let phoneNumber = document.forms["audition-form"]["phonenumber"].value;
-      let showSelection = document.forms["audition-form"]["showList"].value;
-      let songSelection = document.forms["audition-form"]["songList"].value;
-      let otherShowSongSelection = document.forms["audition-form"]["otherShowChoice"].value;
-      let mailingList = document.forms["audition-form"]["mailingPreference"].value;
-      let comments = document.forms["audition-form"]["comments"].value;
-
-      /*
-      FORENAME CHECKS
-      */
-
-      // Checking if forename field is empty
-      if (forename == "") {
-        alert("Forename field is empty.")
-        return false;
-      }
-
-      // checking if forename contains special characters
-      if (containsSpecialCharacters(forename)) {
-        alert("Forename cannot contain special characters")
-        return false;
-      }
-
-      // Checking if forename contains numbers
-      if (containsNumbers(forename)) {
-        alert("Forename cannot contain numbers")
-        return false;
-      }
-
-      // Checking forename is between 2 and 30 characters
-      if (forename.length < 2 || forename.length > 30) {
-        alert("Forename(s) must be between 2 and 30 characters.")
-        return false;
-      }
-
-
-      /*
-      SURNAME CHECKS
-      */
-
-      // Checking if surname field is empty
-      if (surname == "") {
-        alert("Surname field is empty.")
-        return false;
-      }
-
-      // checking if surname contains special characters
-      if (containsSpecialCharacters(surname)) {
-        alert("Surname cannot contain special characters")
-        return false;
-      }
-
-      // Checking if surname contains numbers
-      if (containsNumbers(surname)) {
-        alert("Surname cannot contain numbers")
-        return false;
-      }
-
-      // Checking surname is between 2 and 30 characters
-      if (surname.length < 2 || surname.length > 30) {
-        alert("Surname must be between 2 and 30 characters.")
-        return false;
-      }
-
-
-      /*
-      DATE OF BIRTH CHECKS
-      */
-
-      // Checking if date of birth field is empty
-      if (dateOfBirth == "") {
-        alert("Date of Birth field is empty.")
-        return false;
-      }
-
-      // Checking if age is > 0 (i.e. they don't have a date of birth in the future)
-      let currentDay = new Date();
-      if (dateOfBirth > currentDay) {
-        alert("Date of birth must be before today!")
-        return false;
-      }
-
-      // Checking if date object is valid
-      if (!isValidDate(dateOfBirth)) {
-        alert("Invalid date of birth.")
-        return false;
-      }
-
-
-      /*
-      ADDRESS CHECKS
-       */
-
-      // Checking if address field is empty
-      if (address == "") {
-        alert("Address field is empty.")
-        return false;
-      }
-
-      // Contains special characters
-      if (containsSpecialCharacters(address)) {
-        alert("Address cannot contain special characters")
-        return false;
-      }
-
-      // Checking if address is between 5 and 50 characters
-      if (address.length < 5 || address.length > 50) {
-        alert("Address must be between 5 and 50 characters.")
-        return false;
-      }
-
-
-      /*
-      POSTCODE CHECKS
-       */
-
-      // Checking if postcode field is empty
-      if (postcode == "") {
-        alert("Postcode field is empty.")
-        return false;
-      }
-
-      // Checking if postcode contains special characters
-      if (containsSpecialCharacters(postcode)) {
-        alert("Postcode cannot contain special characters.")
-        return false;
-      }
-
-      // Checking if postcode is between 6 and 8 characters
-      if (postcode.length < 6 || postcode.length > 8) {
-        alert("Postcode must be between 6 and 8 characters.")
-        return false;
-      }
-
-      /*
-      EMAIL CHECKS
-       */
-
-      // Checking if email field is empty
-      if (email == "") {
-        alert("Email field is empty.")
-        return false;
-      }
-
-      // Checking if email is between 8 and 50 characters
-      if (email.length < 8 || email.length > 50) {
-        alert("Email address must be between 8 and 50 characters.")
-        return false;
-      }
-
-      // Checking if email address is valid
-      if (!isValidEmail(email)) {
-        alert("Invalid email! Please enter using the format name@email.com")
-        return false;
-      }
-
-
-      /*
-      PHONE NUMBER CHECKS
-       */
-
-      // Checking if phone number field is empty
-      if (phoneNumber == "") {
-        alert("Phone number field is empty.")
-        return false;
-      }
-
-      // Checking if phone number is between 8 and 15 characters
-      if (phoneNumber.length < 8 || phoneNumber.length > 15) {
-        alert("Phone number must be between 8 and 15 characters.")
-        return false;
-      }
-
-      // Checking if phone number contains any characters other than 0-9 and +
-      if (!isValidPhoneNumber(phoneNumber)) {
-        alert("Invalid phone number - please try again.");
-        return false;
-      }
-
-
-      /*
-      SHOW/SONG CHOICE LOGIC
-       */
-
-      // Checking if show option has been chosen
-      if (showSelection == '') {
-        alert("Please select a show.")
-        return false;
-      }
-
-      // Checking if a song has been chosen, if Pirates or Pinafore were chosen
-      if (showSelection == 'pirates') {
-        if (songSelection == '') {
-          alert("Please select a song.")
-          return false;
-        }
-      }
-
-      if (showSelection == 'pinafore') {
-        if (songSelection == '') {
-          alert("Please select a song.")
-          return false;
-        }
-      }
-
-      // Checks for 'other show selection' box if 'other' was chosen
-      if (showSelection == 'other') {
-        // Checking to see if box is empty
-        if (otherShowSongSelection == '') {
-          alert("Please enter the show & song you would like to audition with.")
-          return false;
-        }
-        // Checking to see if length is <= 10 or > 300 characters
-        if (otherShowSongSelection.length <= 10 || otherShowSongSelection.length > 300) {
-          alert("Please ensure your selection is between 10 and 300 characters long")
-          return false;
-        }
-        // Checking to see if other show box contains weird symbols
-        if (containsSpecialCharactersTextBoxes(otherShowSongSelection)) {
-          alert("Other show/song selection box cannot contain abusive symbols.")
-          return false;
-        }
-      }
-
-      // Checking to see if there is any text in the 'other' box when any option but 'other' has been chosen
-      if (showSelection != 'other') {
-        if (otherShowSongSelection != '') {
-          alert("Please ensure the other show selection box is empty.")
-          return false;
-        }
-      }
-
-
-      /*
-      MAILING LIST CHECKS
-       */
-
-      // Checking an option has been selected
-      if (mailingList != "Yes" && mailingList != "No") {
-        alert("Mailing list value is unknown");
-        return false;
-      }
-
-
-      /*
-      COMMENTS BOX CHECKS
-       */
-
-      // Don't need to check if it is empty, as it is an optional field
-
-      // Checking if contains special characters
-      if (containsSpecialCharactersTextBoxes(comments)) {
-        alert("Comments box cannot contain abusive symbols.")
-        return false;
-      }
-
-      // Checking if comments box is less than 300 characters
-      if (comments.length > 300) {
-        alert("Please keep any comments under 300 characters.")
-        return false;
-      }
-
-      // document.write('Form submitted successfully');
-      // prevent as no server script to handle the data
-      return true;
-    }
-
-    // Checking if a string contains special characters
-    function containsSpecialCharacters(str) {
-      const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/g;
-      return regex.test(str);
-    }
-
-    // Modified version of the above that doesn't include symbols that may legitimately be used in text boxes (full stops, commas, brackets etc.)
-    function containsSpecialCharactersTextBoxes(str) {
-      const regex = /[@#$%^&*_+\=\[\]{}\\|<>\/]+/g;
-      return regex.test(str)
-    }
-
-    // Checking if a string contains numbers
-    function containsNumbers(str) {
-      const regex = /\d/;
-      return regex.test(str);
-    }
-
-    // Checking if date is valid
-    function isValidDate(date) {
-      return date instanceof Date && !isNaN(date);
-    }
-
-    // Email function validation (adapted from https://www.w3resource.com/javascript/form/email-validation.php)
-    function isValidEmail(email) {
-      return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-
-    }
-
-    // Checking if phone number is valid (adapted from https://www.w3resource.com/javascript/form/phone-no-validation.php)
-    function isValidPhoneNumber(number) {
-      const regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-      return regex.test(number);
-    }
-
-  </script>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-          crossorigin="anonymous"></script>
-  <script src="js/app.js"></script>
-
 </head>
-<body>
 
-<header>
-  <h1>G&S Audition Database</h1>
-</header>
+<!-- Adding background image to the page that auto-fills the background, and stays fixed (i.e. doesn't scroll -->
+<body style="background-image: url('img/background-photo.jpg'); background-attachment: fixed; background-size: cover">
 
-<!-- form for adding an employee -->
-<div class="container-fluid">
-  <br>
-  <div class="container">
-    <form name="audition-form" action="/add" method="POST" onsubmit="return validateForm()">
-      <fieldset>
-        <div class="row">
-          <header>
-            <h3>Submit an audition request:</h3>
-            <p id="required-field"><i>* indicates a required field.</i></p>
-          </header>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-floating">
-              <input type="text" class="form-control" id='forename' name="forename" placeholder="forename" minlength="2"
-                     maxlength="30" required>
-              <label for="forename">Forename *</label>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="Surname" name="surname" placeholder="surname" minlength="2"
-                     maxlength="30" required>
-              <label for="Surname">Surname *</label>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="dob" name="dob" placeholder="dob" required>
-              <label for="dob">Date of Birth (Please use the format dd-mm-yyyy) *</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="address" name="address" placeholder="address" minlength="5"
-                     maxlength="50"
-                     required>
-              <label for="address">Address *</label>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="postcode" name="postcode" placeholder="postcode" minlength="6"
-                     maxlength="8"
-                     required>
-              <label for="postcode">Postcode *</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="email" name="email" placeholder="email" minlength="8"
-                     maxlength="50"
-                     required>
-              <label for="email">Email *</label>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-floating">
-              <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="phonenumber"
-                     minlength="8"
-                     maxlength="15" required>
-              <label for="phonenumber">Phone Number *</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <label for="showList">Select Show:</label>
-            <select class="form-control" id='showList' name='showList' onClick="getShowSongs()">
-            </select>
-          </div>
-          <div class="col-sm">
-            <label for='songList'>Select Audition Song:</label>
-            <select class="form-control" id='songList' name='songList'>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <fieldset class="form-group" id="other-show" name="other-show" style="display:none;">
-              <label for="otherShowChoice">Please enter show & song you would like to audition with:</label>
-              <textarea class="form-control" id="otherShowChoice" name="otherShowChoice" rows="3"></textarea>
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <label>Please select your preferred contact method(s):</label>
-            <div>
-              <input type="checkbox" id="contact-sms" name="contactSMS">
-              <label for="contact-sms">SMS</label>
-            </div>
-            <div>
-              <input type="checkbox" id="contact-email" name="contactEmail">
-              <label for="contact-email">Email</label>
-            </div>
-            <div>
-              <input type="checkbox" id="contact-post" name="contactPost">
-              <label for="contact-post">Post</label>
-            </div>
-          </div>
-        </div>
-        <div id="prefs">
-          <span>Would you like to join our mailing list?</span>
-          <label for="yes">Yes</label>
-          <input type="radio" id="yes" name="mailingPreference" value="Yes">
-          <label for="no">No</label>
-          <input type="radio" id="no" name="mailingPreference" value="No">
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <label for="comments">Please enter any other questions/comments below:</label>
-            <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
-
-  <br>
-
-  <!-- form for viewing an employee -->
-  <div class="container">
-    <form action="/view" method="POST">
-      <fieldset>
-        <div class="row">
-          <header>
-            <h3>Check user details:</h3>
-          </header>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="form-floating">
-              <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
-              <label for="dob">Date of Birth *</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
-
-  <br>
-
-  <!-- form for editing an employee -->
-  <div class="container">
-    <form action="/update" method="POST">
-      <fieldset>
-        <div class="row">
-          <header>
-            <h3>Update user details:</h3>
-          </header>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="form-floating">
-              <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
-              <label for="Forename">Date of Birth *</label>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="form-floating">
-              <input type="text" class="form-control" id='Surname' name="surname" placeholder="surname" minlength="2"
-                     maxlength="30" required>
-              <label for="Forename">New Surname *</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
-
-  <br>
-
-  <!-- form for deleting an employee -->
-  <div class="container">
-    <form action="/delete" method="POST">
-      <fieldset>
-        <div class="row">
-          <header>
-            <h3>Delete a user:</h3>
-            <p><i>For security purposes, enter the date of birth of the employee you'd like to delete:</i></p>
-          </header>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-floating">
-            <input type="text" class="form-control" id='dob' name="dob" placeholder="dob" required>
-            <label for="Forename">Date of Birth *</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+<!-- Jumbotron to introduce the user to the website -->
+<div class="p-5 bg-dark text-white text-center">
+  <h1>Welcome to NUGSS!</h1>
+  <img src="img/nugss-logo.png" height="350">
 </div>
 
+<!-- Navbar that 'sticks' to the top of the screen when scrolling -->
+<nav class="navbar navbar-expand-md sticky-top navbar-dark" style="background-color: black;">
+  <div class="container-fluid" id="navbar-container">
+    <a class="navbar-brand" href="index.html">
+      <img src="/img/nugss-logo.png" alt="" height="82">
+    </a>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Various links that the user can click on to take them to other pages -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <!-- Setting this link as 'active', as it is the page we are currently on (will highlight it) -->
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="our-history.html">Our History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="future-events.html">Future Events</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Auditions
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="audition-info.html">Audition Information</a></li>
+            <li><a class="dropdown-item" href="audition-form.html">Submit an Audition Request</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Break to add space between navbar and top of main content -->
+<br>
+
+<!-- Container for all 'main' content -->
+<div class="container">
+  <div class="row">
+
+    <!-- col-lg used to add responsiveness (resizes at higher resolutions compared to col-sm) -->
+    <div class="col-lg">
+      <!-- The following text has been taken from the NUSU website (https://nusu.co.uk/activities/view-society/77) -->
+      <h1>Welcome!</h1>
+
+      <!-- Horizontal divider -->
+      <hr>
+      <p>Welcome to the Newcastle Gilbert & Sullivan Society!</p>
+      <p>Founded in 1952, we are one of the oldest societies and the longest continuously running society in the
+        University. This year we have just celebrated our 70th anniversary!</p>
+    </div>
+
+    <!-- col-lg used to add responsiveness (resizes at higher resolutions compared to col-sm) -->
+    <div class="col-lg">
+      <!-- Adding fluid image with rounded corners -->
+      <img src="img/index/trial-by-jury.jpg" alt="Photo of 2022's performance of Trial By Jury"
+           class="img-fluid rounded">
+
+      <!-- Caption underneath the photo -->
+      <p class="text-center">2022 - Trial By Jury (70th Anniversary Celebration)</p>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <!-- col-lg used to add responsiveness (resizes at higher resolutions compared to col-sm) -->
+    <div class="col-lg">
+      <!-- Adding fluid image with rounded corners -->
+      <img src="/img/index/the-sorcerer-cast-photo.jpg" alt="Photo of The Sorcerer's cast, 2022"
+           class="img-fluid rounded">
+
+      <!-- Caption underneath the photo -->
+      <p class="text-center">2022 - The Sorcerer</p>
+    </div>
+
+    <!-- col-lg used to add responsiveness (resizes at higher resolutions compared to col-sm) -->
+    <div class="col-lg">
+      <!-- The following text has been taken from the NUSU website (https://nusu.co.uk/activities/view-society/77) -->
+      <h1>What do we do?</h1>
+
+      <!-- Horizontal divider -->
+      <hr>
+      <p>We put on two shows a year, a Gilbert & Sullivan operetta in March and a smaller show in the summer. There
+        are no auditions for the chorus. Last year's main show was The Sorcerer and we most recently performed our
+        summer show Aphrodite's Curse!
+      </p>
+      <p> Anyone interested in stage management, lighting, acting, singing, tech or set design are welcome to come
+        along to a rehearsal and see if you enjoy it!</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg">
+      <!-- The following text has been taken from the NUSU website (https://nusu.co.uk/activities/view-society/77) -->
+      <h1>Awards & Nominations</h1>
+
+      <!-- Horizontal divider -->
+      <hr>
+      <p id="awards-text">Winner of the 2020 societies performance award for our production of Iolanthe!
+        <br>
+        <br>
+        Nominated for Society of the Year, Best Performance and Angel of the North fundraising awards 2022!</p>
+    </div>
+  </div>
+
+  <!-- Carousel to show various NUGSS images -->
+  <div class="row">
+    <div class="col-lg">
+      <h1>See us in action!</h1>
+
+      <!-- Horizontal divider -->
+      <hr>
+      <div id="nugss-photo-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/index/carousel-one.jpg" alt="Winter Ball 2021" class="d-block" width="100%" height="100%">
+          </div>
+          <div class="carousel-item">
+            <img src="img/index/carousel-two.jpg" alt="Iolanthe 2020 Principals" class="d-block" width="100%"
+                 height="100%">
+          </div>
+          <div class="carousel-item">
+            <img src="img/index/carousel-three.jpg" alt="Iolanthe 2020 Full Cast" class="d-block" width="100%"
+                 height="100%">
+          </div>
+        </div>
+
+        <!-- Buttons to control the carousel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#nugss-photo-carousel"
+                data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#nugss-photo-carousel"
+                data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Footer including copyright info for the website -->
+<div class="mt-5 p-3 text-white text-center" style="font-size: larger; background-color: black">
+  <p>© Newcastle University Gilbert & Sullivan Society 2022</p>
+</div>
+
+<!-- Bootstrap Script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
-        integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
-        crossorigin="anonymous"></script>
-
-<script>
-  // Script to autofill 'Select Audition Song' dropdown based on the choice made in 'Select Show' dropdown
-  $(document).ready(function () {
-
-    var showList = document.getElementById('showList');
-
-    showList.options[0] = new Option('Select:', '');
-    showList.options[1] = new Option('The Pirates of Penzance', 'pirates');
-    showList.options[2] = new Option('HMS Pinafore', 'pinafore');
-    showList.options[3] = new Option('Other (Please specify below)', 'other')
-  });
-
-  function getShowSongs() {
-    var showList = document.getElementById('showList');
-    var songList = document.getElementById("songList");
-    var showListSelectedValue = showList.options[showList.selectedIndex].value;
-
-
-    // Show Pirates of Penzance songs
-    if (showListSelectedValue == 'pirates') {
-
-      songList.options.length = 0;
-      $('#other-show').hide();
-      songList.options[0] = new Option('Select:', '');
-      songList.options[1] = new Option('Oh, is there not a maiden breast (Tenor)', 'pirates-frederic');
-      songList.options[2] = new Option('Oh Better Far to Live and Die (Bass)', 'pirates-pirateking');
-      songList.options[3] = new Option('I am the Very Model of a Modern Major General (Baritone)', 'pirates-major');
-    }
-
-    // Show HMS Pinafore songs
-    else if (showListSelectedValue == 'pinafore') {
-
-      songList.options.length = 0;
-      $('#other-show').hide();
-      songList.options[0] = new Option('Select:', '');
-      songList.options[1] = new Option('A Maiden Fair to See (Tenor)', 'pinafore-ralph');
-      songList.options[2] = new Option('He is an Englishman (Bass)', 'pinafore-boatswain');
-      songList.options[3] = new Option('When I was a Lad (Baritone)', 'pinafore-sirjosephporter');
-    }
-
-    // Show 'other selection' text box if 'other' option chosen
-    else if (showListSelectedValue == 'other') {
-      songList.options.length = 0;
-      $('#other-show').show();
-    } else {
-      songList.options.length = 0;
-      $('#other-show').hide();
-
-    }
-  }
-</script>
 
 </body>
+
 </html>

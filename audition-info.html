@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audition Info</title>
+
+  <!-- Link to the CSS Stylesheet used -->
+  <link rel="stylesheet" type="text/css" href="css/audition-info.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Linking Bootstrap to the page -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<!-- Adding background image to the page that auto-fills the background, and stays fixed (i.e. doesn't scroll -->
+<body style="background-image: url('img/background-photo.jpg'); background-attachment: fixed; background-size: cover">
+
+<!-- Navbar that 'sticks' to the top of the screen when scrolling -->
+<nav class="navbar navbar-expand-md sticky-top navbar-dark" style="background-color: black;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="/img/nugss-logo.png" alt="" height="82">
+    </a>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Various links that the user can click on to take them to other pages -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="our-history.html">Our History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="future-events.html">Future Events</a>
+        </li>
+        <li class="nav-item dropdown">
+
+          <!-- Setting this link as 'active', as it is the page we are currently on (will highlight it) -->
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Auditions
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="audition-info.html">Audition Information</a></li>
+            <li><a class="dropdown-item" href="audition-form.html">Submit an Audition Request</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Break to add space between navbar and top of main content -->
+  <br>
+
+<!-- Container for all 'main' content -->
+  <div class="container">
+    <div class="row">
+
+      <!-- col-lg used to add responsiveness (resizes at higher resolutions compared to col-sm) -->
+      <div class="col-lg">
+        <h1>Audition Information</h1>
+
+        <!-- Horizontal divider -->
+        <hr>
+
+        <p>A set of FAQs for auditioning can be found below.</p>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- col-lg used to add responsiveness (resizes at higher resolutions compared to col-sm) -->
+      <div class="col-lg">
+
+        <!-- Accordion to display the various audition FAQs -->
+        <div class="accordion" id="audition-faqs">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne">When will auditions be?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#audition-faqs">
+              <div class="card-body">
+                <p>Audition dates will be announced in early September - if you join our <a
+                  href="dummy/path/mailing-list.html" target="_blank">mailing list</a> we'll give you more info closer
+                  to the time!</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                Which parts will I be considered for?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#audition-faqs">
+              <div class="card-body">
+                <p>
+                  NUGSS are an inclusive society, and so we cast genderblind productions - so any character can be
+                  played by anyone! Therefore, you don't need to choose specific parts you'd like to play, but if you'd
+                  like to only be considered for certain roles, please tell us in the comments box of the <a
+                  href="audition-form.html">audition form.</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree">When will I find out if I've been cast?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#audition-faqs">
+              <div class="card-body">
+                <p>You should find out if you've landed a role within 5 working days of the final audition time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-four">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                      data-bs-target="#collapse-four">What if I'm not cast?
+              </button>
+            </h2>
+            <div id="collapse-four" class="accordion-collapse collapse" data-bs-parent="#audition-faqs">
+              <div class="card-body">
+                <p>Don't worry! Even if you're not cast, we'd love to have you in the chorus. There are often
+                  singing/speaking roles for chorus members too, so we'll prioritise people that auditioned for these
+                  parts.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-five">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                      data-bs-target="#collapse-five">How do I sign up for an audition?
+              </button>
+            </h2>
+            <div id="collapse-five" class="accordion-collapse collapse" data-bs-parent="#audition-faqs">
+              <div class="card-body">
+                <p>Please sign up using <a href="audition-form.html">this form</a>! </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer including copyright info for the website -->
+<div class="mt-5 p-3 text-white text-center" style="font-size: larger; background-color: black">
+  <p>© Newcastle University Gilbert & Sullivan Society 2022</p>
+</div>
+
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
