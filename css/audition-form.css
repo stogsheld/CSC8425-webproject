@@ -33,14 +33,14 @@ h1 {
 }
 
 
-/* Container */
+/* Container Attributes */
 .container{
   background-color: lightgray;
   padding-bottom: 2%;
   max-width: fit-content;
 }
 
-/* Columns */
+/* Column Attributes */
 .col-sm,.col-sm-8, .col-sm-4, .col, .col-sm-6 {
   padding-top: 15px;
 }

@@ -3,63 +3,6 @@ CSS FOR OUR-HISTORY PAGE
 */
 
 
-/* Setting default font for entire page */
-* {
-  font-family: verdana, sans-serif;
-}
-
-
-/* Navbar Attributes */
-.navbar {
-  color: black;
-}
-.nav-item {
-  font-size: x-large !important;
-  padding-left: 10px;
-}
-#navbar-container {
-  background-color: black;
-}
-
-
-/* Header Attributes */
-h1 {
-  text-align: center;
-}
-
-
-/* Containers */
-.container {
-  background-color: lightgray;
-  padding-top: 2%;
-  padding-bottom: 4%;
-}
-
-
-/* Rows */
-.row {
-  display: flex;
-  align-items: center;
-  padding-right: 5%;
-  padding-left: 5%;
-}
-
-
-/* Columns */
-.col-lg-6, .col-lg {
-  padding: 2%;
-  background-color: lightgray;
-  align-content: center;
-}
-
-
-/* Paragraphs */
-p {
-  font-size: large;
-  padding: 10px;
-}
-
-
 /* Caption for the recent shows table */
 #recent-shows-caption {
   text-align: center;

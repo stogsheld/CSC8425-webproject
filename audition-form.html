@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Audition Database</title>
 
-  <!-- Link to the CSS Stylesheet used -->
+  <!-- No link to the base CSS Stylesheet, as the audition form uses slightly different styling -->
+
+  <!-- Link to the 'Audition-Form' CSS Stylesheet used -->
   <link rel="stylesheet" type="text/css" href="css/audition-form.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,7 +51,7 @@
         return false;
       }
 
-      // Checking forename is between 2 and 30 characters
+      // Checking forename is between 3 and 15 characters
       if (forename.length < 3 || forename.length > 15) {
         alert("Username must be between 3 and 15 characters.")
         return false;
